@@ -31,6 +31,7 @@ const quizQuestions = [
   const questionDisplay = document.querySelector(".question");
   const answerList = document.querySelector(".answer-list");
   const score = document.querySelector(".quiz-score");
+  const answerValidate = document.querySelector(".answer-validate");
   
   // helper methods to create our elements
   // const createQuizQuestion = quizQuestion => {
@@ -43,6 +44,7 @@ const quizQuestions = [
     function createQuizScore(){
     questionDisplay.style.display = "none";
     answerList.style.display = "none";
+    answerValidate.style.display ="none";
     // show the score
     score.style.display = "block";
     score.textContent =
@@ -56,6 +58,11 @@ const quizQuestions = [
   function createQuestionText(questionText){
      questionDisplay.textContent = "Q)" + questionText;
    };
+   function answerValid(){
+    answerValidate.style.display = "flex"
+     answerValidate.textContent = "Valider";
+   };
+   answerValid();
 
   // const createAnswerButtons = answerOptions => {
   function createAnswerButtons(answerOptions){

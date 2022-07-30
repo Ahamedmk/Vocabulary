@@ -66,6 +66,20 @@ body {
   outline: none;
 }
 
+.answer-validate{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);
+  width: 50%;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 10px;
+  margin: 80px auto 0px;
+
+}
+
 
 @media all and (max-width: 480px) {
   .answer-list {
