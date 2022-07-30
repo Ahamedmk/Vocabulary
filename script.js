@@ -61,6 +61,19 @@ const quizQuestions = [
    function answerValid(){
     answerValidate.style.display = "flex"
      answerValidate.textContent = "Valider";
+     answerValidate.addEventListener("click", () => {
+      console.log("c'est bon");
+     currentQuestion += 1;
+     console.log(currentQuestion)
+    
+    // display questions if we still have them,
+    // otherwise display the scores
+    if (quizQuestions[currentQuestion]) {
+      createQuizQuestion(quizQuestions[currentQuestion]);
+    } else {
+      createQuizScore();
+    };
+  });
    };
    answerValid();
 
@@ -93,15 +106,7 @@ const quizQuestions = [
         }
   
         // move on to the next question
-        currentQuestion += 1;
-  
-        // display questions if we still have them,
-        // otherwise display the scores
-        if (quizQuestions[currentQuestion]) {
-          createQuizQuestion(quizQuestions[currentQuestion]);
-        } else {
-          createQuizScore();
-        }
+        
       });
   
       // append button to our div
