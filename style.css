@@ -40,6 +40,13 @@ body {
   flex-wrap: wrap;
 }
 
+/* button::before{
+  content:"a";
+  width:100px;
+  height: 100px;
+  border: 1px solid black;
+} */
+
 .answer-item {
   display: flex;
   align-items: center;
@@ -57,8 +64,8 @@ body {
   background-color: #545E75;
 }
 
-.answer-item button:hover {
-  background-color: #F4E04D;
+.answer-item button {
+  /* background: #F4E04D; */
   color: #000000;
 }
 

@@ -33,6 +33,7 @@ const quizQuestions = [
   const score = document.querySelector(".quiz-score");
   const answerValidate = document.querySelector(".answer-validate");
   
+  
   // helper methods to create our elements
   // const createQuizQuestion = quizQuestion => {
     function createQuizQuestion(quizQuestion){
@@ -99,12 +100,12 @@ const quizQuestions = [
   
       answerButton.addEventListener("click", () => {
         // get our currentQuestion
+        answerButton.style.background = "linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);";
         const question = quizQuestions[currentQuestion];
         // compare the answer the user selected to the correct answer
         if (question.answer === answerButton.textContent) {
           currentScore += 1;
         }
-  
         // move on to the next question
         
       });
