@@ -1,7 +1,12 @@
 :root{
   --progress: 10%;
 }
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
 
 * {
   font-family: "Courier New", Courier, monospace
@@ -20,9 +25,11 @@ body {
   /* display: flex;
   justify-content: center; */
   position: relative;
-  width: 220px;
-  height: 35px;
-  border: 2px solid #00aeff;
+  width: 320px;
+  height: 25px;
+  /* border: 2px solid #00aeff; */
+  border-radius: 99px;
+  background: white;
 }
 
 #progressBar::after{
@@ -31,8 +38,9 @@ body {
   position: absolute;
   width:var(--progress);
   max-width: 100%;
-  height: 35px;
-  background-color: #00aeff;
+  height: 25px;
+  background: linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);
+  border-radius: 99px;
 }
 
 .quiz-container {
@@ -50,13 +58,14 @@ body {
 }
 
 .question {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   height: 50px;
   font-weight: 900;
+
 }
 
 .answer-list {
@@ -122,8 +131,11 @@ body {
     /* background: linear-gradient(126deg, rgba(86,69,185,1) 10%, rgba(228,117,181,0.9925012241224614) 94%); */
     background: white;
     color: black;
+    font-weight: 900;
+    font-size: larger;
     border: none;
-    border-radius:10px
+    border-radius:10px;
+    height: 70px;
   }
 
   .answer-item button:hover {
