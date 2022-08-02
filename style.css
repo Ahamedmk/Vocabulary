@@ -26,6 +26,25 @@ body {
   border-radius: 199px;
   background: white;
 }
+img {
+  width: 120px;
+  height: 90px;
+}
+.img {
+   position: relative; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border:1px solid black; */
+  width:100px;
+  height:100px;
+  z-index: 99;
+   top: 15px;
+  
+  border-radius: 50%;
+  margin-top: 30px;
+  /* background: white; */
+}
 .nbre_question{
   font-size: 24px;
   font-weight: 700;
@@ -121,12 +140,6 @@ color: rgb(229, 229, 28);
 .answer-item button:focus {
   outline: none;
 }
-.fa-craw{
-
-}
-
-
-
 
 @media all and (max-width: 480px) {
   .answer-list {
