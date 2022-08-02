@@ -2,9 +2,9 @@ console.log("connecté !");
 // define our data and state objects
 const quizQuestions = [
   {
-    questionText: "What is the capital of Ireland?",
-    answerOptions: ["New York", "Dublin", "Madrid", "Paris"],
-    answer: "Dublin",
+    questionText: "Quelle est la capitale des Comores?",
+    answerOptions: ["Econol", "Dublin", "Moroni", "Gaza"],
+    answer: "Moroni",
   },
   {
     questionText: "Comment s'appelle le prophète",
@@ -12,9 +12,19 @@ const quizQuestions = [
     answer: "Mohamed",
   },
   {
-    questionText: "How many days are in September",
-    answerOptions: ["28", "29", "30", "31"],
-    answer: "30",
+    questionText: "2X8",
+    answerOptions: ["16", "29", "14", "12"],
+    answer: "16",
+  },
+  {
+    questionText: "Comment s'appelle le Premier Calife",
+    answerOptions: ["Omar ", "Abou Bakr", "Ali", "Bilal"],
+    answer: "Abou Bakr",
+  },
+  {
+    questionText: "Que veut dire : ٱلْمَـٰلِكُ",
+    answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
+    answer: "Royauté",
   },
 ];
 
@@ -37,6 +47,8 @@ const questionDisplay = document.querySelector(".question");
 const answerList = document.querySelector(".answer-list");
 const score = document.querySelector(".quiz-score");
 const answerValidate = document.querySelector(".answer-validate");
+const resultBar = document.querySelector(".resultBar");
+let nbreQuestion = document.querySelector(".nbre_question");
 
 // helper methods to create our elements
 // const createQuizQuestion = quizQuestion => {
@@ -51,9 +63,10 @@ function createQuizScore() {
   answerList.style.display = "none";
   answerValidate.style.display = "none";
   progress.style.display = "none";
-  // show the score
+  resultBar.style.display = "none";
+    // show the score
   score.style.display = "block";
-  score.textContent = "You scored " + currentScore + " out of " + quizQuestions.length;
+  score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions.length;
 }
 
 // const createQuestionText = questionText => {
@@ -63,6 +76,11 @@ function createQuizScore() {
 function createQuestionText(questionText) {
   questionDisplay.textContent = "Q)" + questionText;
 }
+ function nbreQuest() {
+   nbreQuestion.textContent = currentQuestion +"/"+ quizQuestions.length;
+   
+  }
+  nbreQuest();
 function progressBar() {
   let progress = document.querySelector("#progressBar");
   console.log(progress);
@@ -82,7 +100,7 @@ function answerValid() {
     console.log("c'est bon");
     currentQuestion += 1;
      progressBar();
-    
+     nbreQuest();
     // display questions if we still have them,
     // otherwise display the scores
     if (quizQuestions[currentQuestion]) {
