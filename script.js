@@ -26,6 +26,27 @@ const quizQuestions = [
     answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
     answer: "Royauté",
   },
+  {
+    questionText: "Que veut dire : ٱلْمَـٰلِكُ",
+    answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
+    answer: "Royauté",
+  },
+  {
+    questionText: "Que veut dire : ٱلْمَـٰلِكُ",
+    answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
+    answer: "Royauté",
+  },
+  {
+    questionText: "Que veut dire : ٱلْمَـٰلِكُ",
+    answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
+    answer: "Royauté",
+  },
+  {
+    questionText: "Que veut dire : ٱلْمَـٰلِكُ",
+    answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
+    answer: "Royauté",
+  },
+  
 ];
 
 console.log(quizQuestions.length);
@@ -124,10 +145,12 @@ function createAnswerButtons(answerOptions) {
     const answerItemDiv = document.createElement("div");
     answerItemDiv.className = "answer-item";
     //answerItemDiv.classList.add("answer-item");
+    
 
     //create a button
     const answerButton = document.createElement("button");
     answerButton.textContent = answerOption;
+    
 
     // add an eventlistener to this button to check if answer is correct or not
     // handleAnswerButtonClick();
