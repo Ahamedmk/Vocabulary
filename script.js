@@ -127,11 +127,12 @@ function answerValid() {
     if (quizQuestions[currentQuestion]) {
       createQuizQuestion(quizQuestions[currentQuestion]);
     } else {
-      createQuizScore();
+      setTimeout(createQuizScore,500);
     }
   });
 }
 answerValid();
+
 
 // const createAnswerButtons = answerOptions => {
 function createAnswerButtons(answerOptions) {
