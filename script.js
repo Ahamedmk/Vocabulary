@@ -52,9 +52,10 @@ const quizQuestions = [
 
 console.log(quizQuestions.length);
 
+
 let currentQuestion = 0; //computers start counting from zero remember!
 let currentScore = 0;
-
+console.log(currentScore);
 // get our elements from the dom
 let progress = document.querySelector("#progressBar");
 console.log(progress);
@@ -134,12 +135,6 @@ function answerValid() {
 }
 answerValid();
 
-//fonction incrementation des lettres
-function nextCharacter(c) {
-  return String.fromCharCode(c.charCodeAt(0) + 1);
-}
- let i = "A";
-
 // const createAnswerButtons = answerOptions => {
 function createAnswerButtons(answerOptions) {
   //clear our answer list before creating new answer buttons
@@ -156,24 +151,27 @@ function createAnswerButtons(answerOptions) {
 
     //create a button
     const answerButton = document.createElement("button");
+    console.log(answerButton)
     const divbutton = document.createElement("div");
     divbutton.className ="button";
-    let propsButton = divbutton.innerHTML = letters[i];
+     divbutton.innerHTML = letters[i];
     // divbutton.innerHTML = nextCharacter(propsButton);
-    let props = answerButton.textContent = answerOption;
-    answerButton.appendChild(divbutton);
+    answerButton.textContent = answerOption;
+     answerItemDiv.appendChild(divbutton);
 
     console.log(answerButton)
     // add an eventlistener to this button to check if answer is correct or not
     // handleAnswerButtonClick();
 
     answerButton.addEventListener("click", () => {
+      console.log("je suis la")
       // get our currentQuestion
       answerButton.style.background = "linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);";
       const question = quizQuestions[currentQuestion];
       // compare the answer the user selected to the correct answer
       if (question.answer === answerButton.textContent) {
         currentScore += 1;
+        console.log(currentScore);
       }
       // move on to the next question
     });

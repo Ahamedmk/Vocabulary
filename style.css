@@ -117,6 +117,8 @@ color: rgb(229, 229, 28);
 
 .answer-item {
   display: flex;
+  background: white;
+  
   align-items: center;
   justify-content: center;
   flex: 1 50%;
@@ -163,7 +165,7 @@ color: rgb(229, 229, 28);
 
   .answer-item button {
     /* background: linear-gradient(126deg, rgba(86,69,185,1) 10%, rgba(228,117,181,0.9925012241224614) 94%); */
-    background: white;
+    background: transparent;
     color: black;
     font-weight: 900;
     font-size: larger;
@@ -174,8 +176,15 @@ color: rgb(229, 229, 28);
 
   .answer-item button:hover {
     color: white;
-    background: linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);
+    background: transparent;
+    border: none;
   }
+  .answer-item:hover {
+    color: white;
+    background: linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);
+    border: 1px solid white;
+  }
+
 
   .answer-item {
     padding: 0;
@@ -198,8 +207,8 @@ color: rgb(229, 229, 28);
     justify-content: center;
     align-items: center;
     /* content: "B"; */
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 30px;
     border: 1px solid black;
     margin-right:60px;
     margin-left: 10px;
