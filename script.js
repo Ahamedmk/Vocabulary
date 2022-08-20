@@ -1,13 +1,14 @@
 console.log("connecté !");
 // define our data and state objects
+letters = ["A","B","C","D"];
 const quizQuestions = [
   {
-    questionText: "Quelle est la capitale des Comores?",
+    questionText: "Quelle est la capitale des Comores ?",
     answerOptions: ["Econol", "Dublin", "Moroni", "Gaza"],
     answer: "Moroni",
   },
   {
-    questionText: "Comment s'appelle le prophète",
+    questionText: "Comment s'appelle le prophète ?",
     answerOptions: ["Abdullah", "Harry Potter", "Omar", "Mohamed"],
     answer: "Mohamed",
   },
@@ -17,7 +18,7 @@ const quizQuestions = [
     answer: "16",
   },
   {
-    questionText: "Comment s'appelle le Premier Calife",
+    questionText: "Comment s'appelle le Premier Calife ?",
     answerOptions: ["Omar ", "Abou Bakr", "Ali", "Bilal"],
     answer: "Abou Bakr",
   },
@@ -133,6 +134,11 @@ function answerValid() {
 }
 answerValid();
 
+//fonction incrementation des lettres
+function nextCharacter(c) {
+  return String.fromCharCode(c.charCodeAt(0) + 1);
+}
+ let i = "A";
 
 // const createAnswerButtons = answerOptions => {
 function createAnswerButtons(answerOptions) {
@@ -141,7 +147,7 @@ function createAnswerButtons(answerOptions) {
 
   // our answerOptions is an array, so we map over it to
   // create a list of answer buttons
-  answerOptions.map((answerOption) => {
+  answerOptions.map((answerOption,i ) => {
     // create an answer item div and give it a class
     const answerItemDiv = document.createElement("div");
     answerItemDiv.className = "answer-item";
@@ -150,9 +156,14 @@ function createAnswerButtons(answerOptions) {
 
     //create a button
     const answerButton = document.createElement("button");
-    answerButton.textContent = answerOption;
-    
+    const divbutton = document.createElement("div");
+    divbutton.className ="button";
+    let propsButton = divbutton.innerHTML = letters[i];
+    // divbutton.innerHTML = nextCharacter(propsButton);
+    let props = answerButton.textContent = answerOption;
+    answerButton.appendChild(divbutton);
 
+    console.log(answerButton)
     // add an eventlistener to this button to check if answer is correct or not
     // handleAnswerButtonClick();
 
