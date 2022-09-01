@@ -196,7 +196,7 @@ function answerValid() {
     //   currentQuestion = 0
     // }
      progressBar();
-     git();
+     nbreQuest();
     
     if (quizQuestions[level].tableaux[currentQuestion]) {
       createQuizQuestion(quizQuestions[level].tableaux[currentQuestion]);
