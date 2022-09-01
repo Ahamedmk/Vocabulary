@@ -95,12 +95,13 @@ let level = 0;
 
 let currentQuestion = 0; //computers start counting from zero remember!
 let currentScore = 0;
+let percentage = 0;
 
 
 // get our elements from the dom
 let progress = document.querySelector("#progressBar");
 console.log(progress);
-let percentage = parseInt(progress.getAttribute("data-progress").replace("%", ""));
+// let percentage = parseInt(progress.getAttribute("data-progress").replace("%", ""));
 // percentage = 40;
 // console.log(percentage);
 progress.setAttribute("data-progress", percentage + "%");
@@ -133,6 +134,7 @@ function createQuizScore() {
     // show the score
   score.style.display = "flex";
   score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions[level].tableaux.length;
+  // progress.dataset.progress = 0
    rejouer();
 }
 
@@ -149,6 +151,12 @@ function rejouer() {
   level += 1;
   currentQuestion = 0;
   currentScore = 0;
+  nbreQuestion.textContent = "";
+   progress.dataset.progress = 0;
+  
+  // progress = 0;
+  
+  
   
   console.log(level);
   createQuizQuestion(quizQuestions[level].tableaux[0]);
@@ -169,7 +177,7 @@ function createQuestionText(questionText) {
   questionDisplay.textContent = "Q)" + questionText;
 }
 
- function nbreQuest(tableaux) {
+ function nbreQuest() {
    nbreQuestion.textContent = currentQuestion +"/"+ quizQuestions[level].tableaux.length;
    
   }
@@ -177,8 +185,8 @@ function createQuestionText(questionText) {
 function progressBar() {
   let progress = document.querySelector("#progressBar");
   console.log(progress);
-  let percentage = parseInt(progress.getAttribute("data-progress").replace("%", ""));
-  percentage += 100 / quizQuestions[level].tableaux.length;
+ percentage = parseInt(progress.getAttribute("data-progress").replace("%", ""));
+percentage += Math.round(100 / quizQuestions[level].tableaux.length);
   console.log(percentage);
   progress.setAttribute("data-progress", percentage + "%");
   document.documentElement.style.setProperty("--progress", percentage + "%");
@@ -192,11 +200,12 @@ function answerValid() {
   answerValidate.addEventListener("click", () => {
     console.log("c'est bon");
     currentQuestion += 1;
+    percentage = 0;
     // if(level === 1){
     //   currentQuestion = 0
     // }
-     progressBar();
-     nbreQuest();
+      progressBar();
+      nbreQuest();
     
     if (quizQuestions[level].tableaux[currentQuestion]) {
       createQuizQuestion(quizQuestions[level].tableaux[currentQuestion]);
