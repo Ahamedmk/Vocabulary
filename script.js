@@ -1,14 +1,15 @@
-console.log("connecté !");
-// define our data and state objects
-letters = ["A","B","C","D"];
+
 const quizQuestions = [
   {
-    questionText: "Quelle est la capitale des Comores ?",
+    level: 1,
+    tableaux:[
+  {
+    questionText: "Quelle est la capitale des Comores?",
     answerOptions: ["Econol", "Dublin", "Moroni", "Gaza"],
     answer: "Moroni",
   },
   {
-    questionText: "Comment s'appelle le prophète ?",
+    questionText: "Comment s'appelle le prophète",
     answerOptions: ["Abdullah", "Harry Potter", "Omar", "Mohamed"],
     answer: "Mohamed",
   },
@@ -16,55 +17,96 @@ const quizQuestions = [
     questionText: "2X8",
     answerOptions: ["16", "29", "14", "12"],
     answer: "16",
+  }
+] 
   },
   {
-    questionText: "Comment s'appelle le Premier Calife ?",
+     level: 2,
+    tableaux: [
+  {
+    questionText: "Comment s'appelle le Premier Calife",
     answerOptions: ["Omar ", "Abou Bakr", "Ali", "Bilal"],
     answer: "Abou Bakr",
-  },
-  {
-    questionText: "Que veut dire : ٱلْمَـٰلِكُ",
-    answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
+    },
+   {     questionText: "Que veut dire : car",
+    answerOptions: ["voiture", "Justice", "Equité", "Pardonneur"],
+     answer: "voiture",
+   },
+   {
+     questionText: "Que veut dire : ٱلْمَـٰلِكُ",
+     answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
     answer: "Royauté",
-  },
-  {
-    questionText: "Que veut dire : ٱلْمَـٰلِكُ",
-    answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
+   },
+ {
+     questionText: "Que veut dire : ٱلْمَـٰلِكُ",
+     answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
     answer: "Royauté",
-  },
-  {
-    questionText: "Que veut dire : ٱلْمَـٰلِكُ",
-    answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
+   },
+   {
+     questionText: "Que veut dire : ٱلْمَـٰلِكُ",
+     answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
     answer: "Royauté",
-  },
-  {
-    questionText: "Que veut dire : ٱلْمَـٰلِكُ",
-    answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
-    answer: "Royauté",
-  },
-  {
-    questionText: "Que veut dire : ٱلْمَـٰلِكُ",
-    answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
-    answer: "Royauté",
-  },
-  
+   },
+    {
+     questionText: "Que veut dire : ٱلْمَـٰلِكُ",
+     answerOptions: ["Royauté", "Justice", "Equité", "Pardonneur"],
+     answer: "Royauté",
+    }
+  ]
+ },
+ {
+  level: 3,
+ tableaux: [
+{
+ questionText: "Quelle est la traduction de : ntsanu ",
+ answerOptions: ["8 ", "5", "2", "4"],
+ answer: "5",
+ },
+{   
+  questionText: "Quelle est la traduction de : kume na ntsanu ",
+  answerOptions: ["8 ", "10", "14", "15"],
+  answer: "15",
+},
+{
+  questionText: "Quelle est la traduction de : mengo mfukare ",
+  answerOptions: ["60 ", "10", "80", "50"],
+  answer: "60",
+},
+{
+  questionText: "Quelle est la traduction de : madjana mayili ",
+  answerOptions: ["40 ", "200", "400", "2000"],
+  answer: "200",
+},
+{
+  questionText: "Quelle est la traduction de : shihwi ",
+  answerOptions: ["8000", "10000", "1000", "900"],
+  answer: "1000",
+},
+ {
+  questionText: "Quelle est la traduction de : mengo shenda ",
+  answerOptions: ["85 ", "90", "600", "60"],
+  answer: "15",
+ }
+]
+}
 ];
 
-console.log(quizQuestions.length);
-
+let level = 0;
 
 let currentQuestion = 0; //computers start counting from zero remember!
 let currentScore = 0;
-console.log(currentScore);
+
+
 // get our elements from the dom
 let progress = document.querySelector("#progressBar");
 console.log(progress);
 let percentage = parseInt(progress.getAttribute("data-progress").replace("%", ""));
 // percentage = 40;
-console.log(percentage);
+// console.log(percentage);
 progress.setAttribute("data-progress", percentage + "%");
 document.documentElement.style.setProperty("--progress", percentage + "%");
 
+const letters = ["A","B","C","D"];
 const quizContainer = document.querySelector(".quiz-container");
 const questionDisplay = document.querySelector(".question");
 const answerList = document.querySelector(".answer-list");
@@ -75,9 +117,10 @@ let nbreQuestion = document.querySelector(".nbre_question");
 
 // helper methods to create our elements
 // const createQuizQuestion = quizQuestion => {
-function createQuizQuestion(quizQuestion) {
-  createQuestionText(quizQuestion.questionText);
-  createAnswerButtons(quizQuestion.answerOptions);
+function createQuizQuestion(tableau) {
+  createQuestionText(tableau.questionText);
+  createAnswerButtons(tableau.answerOptions);
+  
 }
 
 // const createQuizScore = () => {
@@ -88,31 +131,58 @@ function createQuizScore() {
   progress.style.display = "none";
   resultBar.style.display = "none";
     // show the score
-  score.style.display = "block";
-  score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions.length;
+  score.style.display = "flex";
+  score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions[level].tableaux.length;
+   rejouer();
 }
 
-// const createQuestionText = questionText => {
-//   // append our div to our answer list
-//   questionDisplay.textContent = "Q)" + questionText;
-// };
+
+function rejouer() {
+  const reloadPlay = document.createElement("button");
+  reloadPlay.className = "reload";
+  score.appendChild(reloadPlay);
+  reloadPlay.textContent = "Level Suivant";
+  console.log(reloadPlay);
+  reloadPlay.addEventListener("click",function(){
+   score.style.display = "none";
+  // location.reload();
+  level += 1;
+  currentQuestion = 0;
+  currentScore = 0;
+  
+  console.log(level);
+  createQuizQuestion(quizQuestions[level].tableaux[0]);
+   
+    questionDisplay.style.display = "flex";
+    answerList.style.display = "block";
+    answerValidate.style.display = "flex";
+     progress.style.display = "flex";
+    resultBar.style.display = "flex";
+    //  createQuizQuestion();
+    //  location.reload();
+    console.log(level);
+     
+  })
+}
+
 function createQuestionText(questionText) {
   questionDisplay.textContent = "Q)" + questionText;
 }
- function nbreQuest() {
-   nbreQuestion.textContent = currentQuestion +"/"+ quizQuestions.length;
+
+ function nbreQuest(tableaux) {
+   nbreQuestion.textContent = currentQuestion +"/"+ quizQuestions[level].tableaux.length;
    
   }
-  nbreQuest();
+  
 function progressBar() {
   let progress = document.querySelector("#progressBar");
   console.log(progress);
   let percentage = parseInt(progress.getAttribute("data-progress").replace("%", ""));
-  percentage += 100 / quizQuestions.length;
+  percentage += 100 / quizQuestions[level].tableaux.length;
   console.log(percentage);
   progress.setAttribute("data-progress", percentage + "%");
   document.documentElement.style.setProperty("--progress", percentage + "%");
-  percentage += 100 / quizQuestions.length;
+  percentage += 100 / quizQuestions[level].tableaux.length;
   console.log(percentage);
 }
 
@@ -122,12 +192,14 @@ function answerValid() {
   answerValidate.addEventListener("click", () => {
     console.log("c'est bon");
     currentQuestion += 1;
+    // if(level === 1){
+    //   currentQuestion = 0
+    // }
      progressBar();
-     nbreQuest();
-    // display questions if we still have them,
-    // otherwise display the scores
-    if (quizQuestions[currentQuestion]) {
-      createQuizQuestion(quizQuestions[currentQuestion]);
+     git();
+    
+    if (quizQuestions[level].tableaux[currentQuestion]) {
+      createQuizQuestion(quizQuestions[level].tableaux[currentQuestion]);
     } else {
       setTimeout(createQuizScore,500);
     }
@@ -135,14 +207,16 @@ function answerValid() {
 }
 answerValid();
 
-// const createAnswerButtons = answerOptions => {
 function createAnswerButtons(answerOptions) {
+
   //clear our answer list before creating new answer buttons
   answerList.innerHTML = "";
 
   // our answerOptions is an array, so we map over it to
   // create a list of answer buttons
-  answerOptions.map((answerOption,i ) => {
+  
+  answerOptions.map((answerOption,i) => {
+    
     // create an answer item div and give it a class
     const answerItemDiv = document.createElement("div");
     answerItemDiv.className = "answer-item";
@@ -150,43 +224,49 @@ function createAnswerButtons(answerOptions) {
     
 
     //create a button
-    const answerButton = document.createElement("button");
-    console.log(answerButton)
-    const divbutton = document.createElement("div");
-    divbutton.className ="button";
-     divbutton.innerHTML = letters[i];
-    // divbutton.innerHTML = nextCharacter(propsButton);
-    answerButton.textContent = answerOption;
-     answerItemDiv.appendChild(divbutton);
-
-    console.log(answerButton)
+     //create a button
+     const answerButton = document.createElement("button");
+     console.log(answerButton)
+     const divbutton = document.createElement("div");
+     divbutton.className ="button";
+      divbutton.innerHTML = letters[i];
+     // divbutton.innerHTML = nextCharacter(propsButton);
+     answerButton.textContent = answerOption;
+      answerItemDiv.appendChild(divbutton);
+      divbutton.style.border = "1px solid black";
+    // console.log(answerList);
+    
+  
     // add an eventlistener to this button to check if answer is correct or not
     // handleAnswerButtonClick();
 
-    answerButton.addEventListener("click", () => {
-      console.log("je suis la")
+    answerItemDiv.addEventListener("click", () => {
       // get our currentQuestion
-      answerButton.style.background = "linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);";
-      const question = quizQuestions[currentQuestion];
+      // answerButton.style.background = "linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%)";
+      divbutton.style.border = "1px solid white";
+      const question = quizQuestions[level].tableaux[currentQuestion];
       // compare the answer the user selected to the correct answer
       if (question.answer === answerButton.textContent) {
         currentScore += 1;
-        console.log(currentScore);
       }
       // move on to the next question
-    });
+    
+  }); 
+  // append button to our div
+  answerItemDiv.appendChild(answerButton);
 
-    // append button to our div
-    answerItemDiv.appendChild(answerButton);
+  // append our div to our answer list
+  answerList.appendChild(answerItemDiv);
+});
 
-    // append our div to our answer list
-    answerList.appendChild(answerItemDiv);
-  });
 }
 
-// const handleAnswerButtonClick = answerButton => {};
-function handleAnswerButtonClick(answerButton) {}
+//  const handleAnswerButtonClick = answerButton => {};
+//  function handleAnswerButtonClick(answerButton) {};
+// level = 1;
+ (function () {
+   createQuizQuestion(quizQuestions[level].tableaux[0]);
+ })();
 
-(function () {
-  createQuizQuestion(quizQuestions[0]);
-})();
+
+ 
