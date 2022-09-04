@@ -69,8 +69,8 @@ const quizQuestions = [
 },
 {
   questionText: "Quelle est la traduction de : mengo mfukare ",
-  answerOptions: ["60 ", "10", "80", "50"],
-  answer: "60",
+  answerOptions: ["60 ", "70", "80", "50"],
+  answer: "70",
 },
 {
   questionText: "Quelle est la traduction de : madjana mayili ",
@@ -85,7 +85,7 @@ const quizQuestions = [
  {
   questionText: "Quelle est la traduction de : mengo shenda ",
   answerOptions: ["85 ", "90", "600", "60"],
-  answer: "15",
+  answer: "90",
  }
 ]
 }
@@ -115,12 +115,18 @@ const score = document.querySelector(".quiz-score");
 const answerValidate = document.querySelector(".answer-validate");
 const resultBar = document.querySelector(".resultBar");
 let nbreQuestion = document.querySelector(".nbre_question");
+const reloadPlay = document.querySelector(".quiz-level");
+const quizReplay = document.querySelector(".quiz-replay");
+const buttonConfirm = document.querySelector(".buttonConfirm");
+
+console.log(quizQuestions.length);
 
 // helper methods to create our elements
 // const createQuizQuestion = quizQuestion => {
 function createQuizQuestion(tableau) {
   createQuestionText(tableau.questionText);
   createAnswerButtons(tableau.answerOptions);
+  buttonConfirm.style.display = "none";
   
 }
 
@@ -133,22 +139,28 @@ function createQuizScore() {
   resultBar.style.display = "none";
     // show the score
   score.style.display = "flex";
-  score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions[level].tableaux.length;
+  buttonConfirm.style.display = "flex";
+  if (currentScore > (50*(quizQuestions[level].tableaux.length)) / 100) {
+    reloadPlay.style.display = "flex";
+    score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions[level].tableaux.length +  " Super vous passez au niveau supérieur 😃!!";
+    
+  }else{
+    reloadPlay.style.display = "none";
+    score.textContent = "Dommage vous devez rejouer 😥";
+  }
+  
   // progress.dataset.progress = 0
-   rejouer();
+    // rejouer();
 }
 
 
-function rejouer() {
-  const reloadPlay = document.createElement("button");
-  reloadPlay.className = "reload";
-  score.appendChild(reloadPlay);
-  reloadPlay.textContent = "Level Suivant";
-  console.log(reloadPlay);
+function niveau() {
   reloadPlay.addEventListener("click",function(){
    score.style.display = "none";
   // location.reload();
   level += 1;
+  if (level < quizQuestions.length){
+    
   currentQuestion = 0;
   currentScore = 0;
   nbreQuestion.textContent = "";
@@ -169,9 +181,40 @@ function rejouer() {
     //  createQuizQuestion();
     //  location.reload();
     console.log(level);
-     
-  })
+  }else{
+    reloadPlay.style.display = "none";
+    score.style.display = "flex";
+    score.textContent = "Fin de la partie";  
+  };  
+  });
+
 }
+niveau();
+
+function rejouer() {
+  
+  quizReplay.addEventListener("click",function(){
+    if (level < quizQuestions.length){
+    score.style.display = "none";
+   // location.reload();
+  //  level += 1;
+   currentQuestion = 0;
+   currentScore = 0;
+   nbreQuestion.textContent = "";
+    progress.dataset.progress = 0;
+    createQuizQuestion(quizQuestions[level].tableaux[0]);
+    
+    questionDisplay.style.display = "flex";
+    answerList.style.display = "block";
+    answerValidate.style.display = "flex";
+     progress.style.display = "flex";
+    resultBar.style.display = "flex";
+    }else{
+      location.reload();
+    }
+})
+};
+rejouer();
 
 function createQuestionText(questionText) {
   questionDisplay.textContent = "Q)" + questionText;
