@@ -140,14 +140,19 @@ function createQuizScore() {
     // show the score
   score.style.display = "flex";
   buttonConfirm.style.display = "flex";
-  if (currentScore > (50*(quizQuestions[level].tableaux.length)) / 100) {
+  if ((currentScore > (50*(quizQuestions[level].tableaux.length)) / 100) &&
+  ((level + 1) === quizQuestions.length)){
+    reloadPlay.style.display = "none";
+    score.style.display = "flex";
+    score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions[level].tableaux.length +  " Super vous avez terminé 😃!!";
+  } else if ((currentScore > (50*(quizQuestions[level].tableaux.length)) / 100)) {
     reloadPlay.style.display = "flex";
-    score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions[level].tableaux.length +  " Super vous passez au niveau supérieur 😃!!";
-    
+    score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions[level].tableaux.length +  " Super vous passez au niveau supérieur 😃!!"; 
   }else{
     reloadPlay.style.display = "none";
     score.textContent = "Dommage vous devez rejouer 😥";
-  }
+  };
+  
   
   // progress.dataset.progress = 0
     // rejouer();
@@ -244,6 +249,7 @@ function answerValid() {
     console.log("c'est bon");
     currentQuestion += 1;
     percentage = 0;
+   
     // if(level === 1){
     //   currentQuestion = 0
     // }
@@ -295,7 +301,7 @@ function createAnswerButtons(answerOptions) {
     answerItemDiv.addEventListener("click", () => {
       // get our currentQuestion
       // answerButton.style.background = "linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%)";
-      divbutton.style.border = "1px solid white";
+      // divbutton.style.border = "1px solid black";
       const question = quizQuestions[level].tableaux[currentQuestion];
       // compare the answer the user selected to the correct answer
       if (question.answer === answerButton.textContent) {

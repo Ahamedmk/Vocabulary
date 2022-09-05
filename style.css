@@ -135,12 +135,12 @@ color: rgb(229, 229, 28);
   background-color: #545E75;
 }
 
-.answer-item button {
+ button.answer-item  {
   /* background: #F4E04D; */
   color: #000000;
 }
 
-.answer-item button:focus {
+button.answer-item :focus {
   outline: none;
 }
 
