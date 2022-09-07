@@ -151,7 +151,7 @@ function createQuizScore() {
     score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions[level].tableaux.length +  " Super vous passez au niveau supérieur 😃!!"; 
   }else{
     reloadPlay.style.display = "none";
-    score.textContent = "Dommage vous devez rejouer 😥";
+    score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions[level].tableaux.length +  " Dommage vous devez rejouer 😥";
   };
   
   
@@ -267,6 +267,9 @@ function answerValid() {
     console.log("c'est bon");
     currentQuestion += 1;
     percentage = 0;
+    // if (question.answer != answerButton.textContent) {
+    //   answerItemDiv.style.backgroundColor = "red";
+    // }
    
     // if(level === 1){
     //   currentQuestion = 0

@@ -264,9 +264,9 @@ button.answer-item :focus {
     background: linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);
     /* width: 50%;
     height: 40px; */
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
-    border-radius: 99px;
+    border-radius: 5px;
     border: none;
     margin: 0 auto;
   padding: 2px 10px;
@@ -279,9 +279,9 @@ button.answer-item :focus {
     background: linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);
     /* width: 50%;
     height: 40px; */
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
-    border-radius: 99px;
+    border-radius: 5px;
     border: none;
     margin: 0 auto;
     padding: 2px 10px;
