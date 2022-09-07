@@ -244,14 +244,14 @@ button.answer-item :focus {
   .quiz-score {
     display: none;
     flex-direction: column;
-    background: linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);
+    /* background: linear-gradient(126deg, rgba(86, 69, 185, 1) 10%, rgba(228, 117, 181, 0.9925012241224614) 94%);
     box-shadow: 10px 11px 15px -3px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    border-radius: 10px; */
     /* width: 100%; */
     /* height: 40px; */
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 800;
-    color: white;
+    color: black;
     padding-top: 10px;
     margin: 0 16px;
   }

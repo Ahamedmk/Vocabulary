@@ -144,6 +144,7 @@ function createQuizScore() {
   ((level + 1) === quizQuestions.length)){
     reloadPlay.style.display = "none";
     score.style.display = "flex";
+    quizReplay.textContent= "Rejouer la partie";
     score.textContent = "Votre score est de  " + currentScore + "/" + quizQuestions[level].tableaux.length +  " Super vous avez terminé 😃!!";
   } else if ((currentScore > (50*(quizQuestions[level].tableaux.length)) / 100)) {
     reloadPlay.style.display = "flex";
@@ -164,7 +165,7 @@ function niveau() {
    score.style.display = "none";
   // location.reload();
   level += 1;
-  if (level < quizQuestions.length){
+  // if (level < quizQuestions.length){
     
   currentQuestion = 0;
   currentScore = 0;
@@ -186,20 +187,21 @@ function niveau() {
     //  createQuizQuestion();
     //  location.reload();
     console.log(level);
-  }else{
-    reloadPlay.style.display = "none";
-    score.style.display = "flex";
-    score.textContent = "Fin de la partie";  
-  };  
-  });
+  // }else{
+  //   reloadPlay.style.display = "none";
+  //   score.style.display = "flex";
+  //   score.textContent = "Fin de la partie";  
+  // };  
+  // });
 
+})
 }
 niveau();
 
 function rejouer() {
   
   quizReplay.addEventListener("click",function(){
-    if (level < quizQuestions.length){
+    if (level+1 < quizQuestions.length){
     score.style.display = "none";
    // location.reload();
   //  level += 1;
@@ -214,6 +216,22 @@ function rejouer() {
     answerValidate.style.display = "flex";
      progress.style.display = "flex";
     resultBar.style.display = "flex";
+    }else if(( level + 1 === quizQuestions.length) && (currentScore < (50*(quizQuestions[level].tableaux.length)) / 100 )){
+    
+      score.style.display = "none";
+   // location.reload();
+  //  level += 1;
+   currentQuestion = 0;
+   currentScore = 0;
+   nbreQuestion.textContent = "";
+    progress.dataset.progress = 0;
+    createQuizQuestion(quizQuestions[level].tableaux[0]);
+    
+    questionDisplay.style.display = "flex";
+    answerList.style.display = "block";
+    answerValidate.style.display = "flex";
+     progress.style.display = "flex";
+    resultBar.style.display = "flex";  
     }else{
       location.reload();
     }
