@@ -30,6 +30,7 @@ body {
 img {
   width: 120px;
   height: 90px;
+  margin-bottom: 40px;
 }
 .img {
    position: relative; 
@@ -160,7 +161,7 @@ button.answer-item :focus {
     font-size: 18px;
     font-weight: 700;
     border-radius: 10px;
-    margin: 27px auto 0px;
+    margin: 27px auto 40px;
   
   }
 
