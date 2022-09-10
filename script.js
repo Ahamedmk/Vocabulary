@@ -327,7 +327,14 @@ function createAnswerButtons(answerOptions) {
       // compare the answer the user selected to the correct answer
       if (question.answer === answerButton.textContent) {
         currentScore += 1;
-      }
+        console.log(currentScore);
+        // currentScore.slice(-1);
+        // console.log(`le slice : ${currentScore}`);
+        
+       }else{
+        currentScore = 0;
+        answerItemDiv.classList.add("answer-false");
+       }
       // move on to the next question
     
   }); 
