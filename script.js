@@ -118,6 +118,7 @@ let nbreQuestion = document.querySelector(".nbre_question");
 const reloadPlay = document.querySelector(".quiz-level");
 const quizReplay = document.querySelector(".quiz-replay");
 const buttonConfirm = document.querySelector(".buttonConfirm");
+const responseFalse = document.querySelector(".response-false");
 
 console.log(quizQuestions.length);
 
@@ -328,12 +329,17 @@ function createAnswerButtons(answerOptions) {
       if (question.answer === answerButton.textContent) {
         currentScore += 1;
         console.log(currentScore);
+        console.log(`Félicitation! au top`)
         // currentScore.slice(-1);
         // console.log(`le slice : ${currentScore}`);
         
        }else{
         currentScore = 0;
         answerItemDiv.classList.add("answer-false");
+        responseFalse.style.display = "block";
+        console.log(responseFalse);
+        responseFalse.textContent = `La bonne réponse est: ${question.answer}`;
+        console.log(`la bonne réponse est : ${question.answer}`)
        }
       // move on to the next question
     
