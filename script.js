@@ -267,6 +267,7 @@ function answerValid() {
   answerValidate.addEventListener("click", () => {
     console.log("c'est bon");
     currentQuestion += 1;
+    responseFalse.style.display = "none";
     percentage = 0;
     // if (question.answer != answerButton.textContent) {
     //   answerItemDiv.style.backgroundColor = "red";
@@ -277,6 +278,8 @@ function answerValid() {
     // }
       progressBar();
       nbreQuest();
+      const question = quizQuestions[level].tableaux[currentQuestion];
+      // compare the answer the user selected to the correct answer
     
     if (quizQuestions[level].tableaux[currentQuestion]) {
       createQuizQuestion(quizQuestions[level].tableaux[currentQuestion]);
@@ -326,15 +329,18 @@ function createAnswerButtons(answerOptions) {
       // divbutton.style.border = "1px solid black";
       const question = quizQuestions[level].tableaux[currentQuestion];
       // compare the answer the user selected to the correct answer
+      responseFalse.style.display = "none";
+    
       if (question.answer === answerButton.textContent) {
         currentScore += 1;
+        
         console.log(currentScore);
         console.log(`Félicitation! au top`)
         // currentScore.slice(-1);
         // console.log(`le slice : ${currentScore}`);
         
        }else{
-        currentScore = 0;
+        // currentScore = 0;
         answerItemDiv.classList.add("answer-false");
         responseFalse.style.display = "block";
         console.log(responseFalse);
