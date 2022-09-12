@@ -102,7 +102,6 @@ const quizContainer = document.querySelector(".quiz-container");
 const questionDisplay = document.querySelector(".question");
 const answerList = document.querySelector(".answer-list");
 const score = document.querySelector(".quiz-score");
-// const answerValidate = document.querySelector(".answer-validate");
 const resultBar = document.querySelector(".resultBar");
 let nbreQuestion = document.querySelector(".nbre_question");
 const reloadPlay = document.querySelector(".quiz-level");
@@ -126,7 +125,6 @@ function createQuizQuestion(tableau) {
 function createQuizScore() {
   questionDisplay.style.display = "none";
   answerList.style.display = "none";
-  // answerValidate.style.display = "none";
   progress.style.display = "none";
   resultBar.style.display = "none";
   responseFalse.style.display = "none"
@@ -174,7 +172,6 @@ function niveau() {
    
     questionDisplay.style.display = "flex";
     answerList.style.display = "block";
-    // answerValidate.style.display = "flex";
      progress.style.display = "flex";
     resultBar.style.display = "flex";
     //  createQuizQuestion();
@@ -221,7 +218,7 @@ function rejouer() {
     
     questionDisplay.style.display = "flex";
     answerList.style.display = "block";
-    answerValidate.style.display = "flex";
+    
      progress.style.display = "flex";
     resultBar.style.display = "flex";  
     }else{
@@ -251,35 +248,6 @@ percentage += Math.round(100 / quizQuestions[level].tableaux.length);
   percentage += 100 / quizQuestions[level].tableaux.length;
   console.log(percentage);
 }
-
-// function answerValid() {
-//   // answerValidate.style.display = "flex";
-//   answerValidate.textContent = "Valider";
-//   answerValidate.addEventListener("click", () => {
-//     console.log("c'est bon");
-//     currentQuestion += 1;
-//     responseFalse.style.display = "none";
-//     percentage = 0;
-//     // if (question.answer != answerButton.textContent) {
-//     //   answerItemDiv.style.backgroundColor = "red";
-//     // }
-   
-//     // if(level === 1){
-//     //   currentQuestion = 0
-//     // }
-//       progressBar();
-//       nbreQuest();
-//       const question = quizQuestions[level].tableaux[currentQuestion];
-//       // compare the answer the user selected to the correct answer
-    
-//     if (quizQuestions[level].tableaux[currentQuestion]) {
-//       createQuizQuestion(quizQuestions[level].tableaux[currentQuestion]);
-//     } else {
-//       setTimeout(createQuizScore,500);
-//     }
-//   });
-// }
-// answerValid();
 
 function createAnswerButtons(answerOptions) {
 
@@ -325,9 +293,7 @@ function createAnswerButtons(answerOptions) {
         
         console.log(currentScore);
         console.log(`Félicitation! au top`)
-        // currentScore.slice(-1);
-        // console.log(`le slice : ${currentScore}`);
-        
+         
        }else{
         // currentScore = 0;
         answerItemDiv.classList.add("answer-false");
@@ -355,9 +321,6 @@ function createAnswerButtons(answerOptions) {
 
 }
 
-//  const handleAnswerButtonClick = answerButton => {};
-//  function handleAnswerButtonClick(answerButton) {};
-// level = 1;
  (function () {
    createQuizQuestion(quizQuestions[level].tableaux[0]);
  })();

@@ -108,6 +108,7 @@ color: rgb(229, 229, 28);
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  padding-bottom: 26px;
 }
 
 /* button::before{
@@ -257,12 +258,16 @@ button.answer-item :focus {
     margin: 0 16px;
   }
   .response-false{
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     font-weight: 600;
     margin-bottom: 40px;
     color: red;
     font-size: 25px;
+   
+    /* border: 1px solid; */
   }
 .quiz-replay{
   display: flex;
