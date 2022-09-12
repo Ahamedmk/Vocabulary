@@ -25,21 +25,21 @@ const quizQuestions = [
     tableaux: [
   {
     questionText: "Comment s'appelle le Premier Calife",
-    answerOptions: ["Omar ", "Abou Bakr", "Ali", "Bilal"],
+    answerOptions: ["Omar", "Abou Bakr", "Ali", "Bilal"],
     answer: "Abou Bakr",
     },
    {     questionText: "Comment s'appelle le deuxième Calife",
-    answerOptions: ["Omar ", "Abou Bakr", "Ali", "Othman"],
+    answerOptions: ["Omar", "Abou Bakr", "Ali", "Othman"],
      answer: "Omar",
    },
    {
     questionText: "Comment s'appelle le troisième Calife",
-    answerOptions: ["Omar ", "Abou Bakr", "Ali", "Othman"],
+    answerOptions: ["Omar", "Abou Bakr", "Ali", "Othman"],
     answer: "Ali",
    },
  {
   questionText: "Comment s'appelle le quatrième Calife",
-  answerOptions: ["Bilal ", "Othman", "Ali", "Abou Bakr"],
+  answerOptions: ["Bilal", "Othman", "Ali", "Abou Bakr"],
     answer: "Othman",
    }
   ]
