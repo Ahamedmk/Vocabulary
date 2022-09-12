@@ -151,7 +151,7 @@ button.answer-item :focus {
   }
 
   .answer-validate{
-    /* display: none; */
+     display: none; 
     justify-content: center;
     align-items: center;
     color: white;
@@ -262,6 +262,7 @@ button.answer-item :focus {
     font-weight: 600;
     margin-bottom: 40px;
     color: red;
+    font-size: 25px;
   }
 .quiz-replay{
   display: flex;
