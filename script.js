@@ -117,7 +117,9 @@ function createQuizQuestion(tableau) {
   createQuestionText(tableau.questionText);
   createAnswerButtons(tableau.answerOptions);
   buttonConfirm.style.display = "none";
-  responseFalse.style.display = "none"
+  responseFalse.style.display = "flex";
+  responseFalse.textContent = "";
+
   
 }
 
@@ -286,29 +288,33 @@ function createAnswerButtons(answerOptions) {
       const question = quizQuestions[level].tableaux[currentQuestion];
       // compare the answer the user selected to the correct answer
       currentQuestion += 1;
-      responseFalse.style.display = "none";
+      responseFalse.style.display = "flex";
     
       if (question.answer === answerButton.textContent) {
         currentScore += 1;
-        
+        responseFalse.style.display = "flex";
+        console.log(responseFalse);
+        responseFalse.style.color = "green";
+        responseFalse.textContent = `Bonne réponse!!`;
         console.log(currentScore);
         console.log(`Félicitation! au top`)
          
        }else{
         // currentScore = 0;
         answerItemDiv.classList.add("answer-false");
-        responseFalse.style.display = "block";
+        responseFalse.style.display = "flex";
         console.log(responseFalse);
+        responseFalse.style.color = "red";
         responseFalse.textContent = `La bonne réponse est: ${question.answer}`;
         console.log(`la bonne réponse est : ${question.answer}`)
        }
        progressBar();
       nbreQuest();
-       if (quizQuestions[level].tableaux[currentQuestion]) {
+        if (quizQuestions[level].tableaux[currentQuestion]) {
        setTimeout(() => createQuizQuestion(quizQuestions[level].tableaux[currentQuestion]),1000);
-      } else {
-        setTimeout(createQuizScore,1000);
-      }
+       } else {
+         setTimeout(createQuizScore,1000);
+       }
       // move on to the next question
     
   }); 
